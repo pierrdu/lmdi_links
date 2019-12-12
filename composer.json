@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Adds links in the toolbar",
 	"homepage": "http://www.insecte.org/ext/readme.txt",
-	"version": "1.1.1",
-	"time": "2016-2-18",
+	"version": "1.1.2",
+	"time": "2019-12-12",
 	"license": "GPL-2.0",
 	"authors": [
 		{

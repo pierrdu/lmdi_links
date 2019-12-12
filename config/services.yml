@@ -2,7 +2,7 @@ services:
     lmdi.links.listener:
         class: lmdi\links\event\listener
         arguments:
-            - '@user'
+            - '@language'
             - '@config'
             - '@template'
         tags:

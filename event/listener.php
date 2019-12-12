@@ -14,59 +14,44 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class listener implements EventSubscriberInterface
 {
 
-	/* @var \phpbb\template\template */
 	protected $template;
-	/* @var \phpbb\user */
-	protected $user;
-	/* @var \phpbb\config\config */
+	protected $language;
 	protected $config;
 
 
 
-	public function __construct(\phpbb\user $user, \phpbb\config\config $config,
+	public function __construct(
+		\phpbb\language\language $language,
+		\phpbb\config\config $config,
 		\phpbb\template\template $template)
 	{
-		$this->template = $template;
-		$this->user = $user;
+		$this->language = $language;
 		$this->config = $config;
+		$this->template = $template;
 	}
 
 	static public function getSubscribedEvents ()
 	{
 		return array(
-			'core.user_setup'	=> 'load_language',
+			'core.user_setup_after'	=> 'load_language',
 			'core.page_header'	=> 'build_url',
 		);
 	}
 
-	public function load_language ($event)
+	public function load_language ()
 	{
-		$lang_set_ext = $event['lang_set_ext'];
-		$lang_set_ext[] = array(
-			'ext_name' => 'lmdi/links',
-			'lang_set' => 'links',
-		);
-		$event['lang_set_ext'] = $lang_set_ext;
+		$this->language->add_lang ('links', 'lmdi/links');
 	} 
 	
 	public function build_url ($event)
 	{
-		if (version_compare ($this->config['version'], '3.2.x', '<'))
-		{
-			$gloss_class = 0;
-		}
-		else
-		{
-			$gloss_class = 1;
-		}
 		$this->template->assign_vars(array(
 			'U_INPN'	=> "http://inpn.mnhn.fr/accueil/recherche-de-donnees/especes/",
 			'U_FE'	=> "http://www.faunaeur.org/?no_redirect=1",
-			'L_INPN'	=> $this->user->lang['LINPN'],
-			'L_FE'	=> $this->user->lang['LFE'],
-			'T_INPN'	=> $this->user->lang['TINPN'],
-			'T_FE'	=> $this->user->lang['TFE'],
-			'S_320'	=> $gloss_class,
+			'L_INPN'	=> $this->language->lang('LINPN'),
+			'L_FE'	=> $this->language->lang('LFE'),
+			'T_INPN'	=> $this->language->lang('TINPN'),
+			'T_FE'	=> $this->language->lang('TFE'),
 		));
 	}
 }
