@@ -46,8 +46,8 @@ class listener implements EventSubscriberInterface
 	public function build_url ($event)
 	{
 		$this->template->assign_vars(array(
-			'U_INPN'	=> "http://inpn.mnhn.fr/accueil/recherche-de-donnees/especes/",
-			'U_FE'	=> "http://www.faunaeur.org/?no_redirect=1",
+			'U_INPN'	=> "https://inpn.mnhn.fr/accueil/recherche-de-donnees/especes/",
+			'U_FE'	=> "https://www.faunaeur.org/?no_redirect=1",
 			'L_INPN'	=> $this->language->lang('LINPN'),
 			'L_FE'	=> $this->language->lang('LFE'),
 			'T_INPN'	=> $this->language->lang('TINPN'),

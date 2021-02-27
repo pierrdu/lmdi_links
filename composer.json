@@ -2,15 +2,15 @@
 	"name": "lmdi/links",
 	"type": "phpbb-extension",
 	"description": "Adds links in the toolbar",
-	"homepage": "http://www.insecte.org/ext/readme.txt",
-	"version": "1.1.2",
-	"time": "2019-12-12",
+	"homepage": "https://www.insecte.org/ext/readme.txt",
+	"version": "1.1.3",
+	"time": "2021-02-27",
 	"license": "GPL-2.0",
 	"authors": [
 		{
 		"name": "Pierre Duhem",
 		"email": "pierre@duhem.com",
-		"homepage": "http://www.insecte.org/ext/readme.txt",
+		"homepage": "https://www.insecte.org/ext/readme.txt",
 		"role": "Extension Developer"
 		}
 	],
